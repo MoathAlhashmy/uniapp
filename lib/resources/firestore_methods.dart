@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:uniapp/models/post.dart';
 import 'package:uniapp/resources/storage_methods.dart';
 import 'package:uuid/uuid.dart';

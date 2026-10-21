@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "900065977251",
-    "project_id": "uniapp-e21de",
-    "storage_bucket": "uniapp-e21de.appspot.com"
+    "project_number": "715522541498",
+    "project_id": "uniapp-99095",
+    "storage_bucket": "uniapp-99095.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:900065977251:android:4485c192bc7dcfc7c2b016",
+        "mobilesdk_app_id": "1:715522541498:android:a59cba92f031b7fea0ff83",
         "android_client_info": {
           "package_name": "com.example.uniapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDzdj07JlHVSF7YCeiGwmYJVmkm9Genv2c"
+          "current_key": "AIzaSyDAAuRS8Cgg1r-HvtgDHyxoeNFiyGhVrKY"
         }
       ],
       "services": {

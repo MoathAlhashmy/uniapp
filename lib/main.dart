@@ -9,18 +9,13 @@ import 'package:uniapp/screens/home_screen.dart';
 import 'package:uniapp/screens/login_screen.dart';
 import 'package:uniapp/screens/verification_screen.dart';
 import 'package:uniapp/uitls/colors.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Platform.isAndroid
-      ? await Firebase.initializeApp(
-          options: const FirebaseOptions(
-              apiKey: "AIzaSyDzdj07JlHVSF7YCeiGwmYJVmkm9Genv2c",
-              appId: "900065977251",
-              messagingSenderId: "900065977251",
-              projectId: "uniapp-e21de",
-              storageBucket: "uniapp-e21de.appspot.com"))
-      : await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -46,9 +41,8 @@ class MyApp extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.active) {
               if (snapshot.hasData) {
                 print(snapshot);
-                if (snapshot.data?.emailVerified == true) {
-                  return const HomeScreen();
-                }
+
+                return const HomeScreen();
                 return const VerificationScreen();
               }
             } else if (snapshot.hasError) {

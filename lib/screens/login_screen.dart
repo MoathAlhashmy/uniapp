@@ -4,7 +4,6 @@ import 'package:uniapp/screens/reset_password_screen.dart';
 import 'package:uniapp/screens/signup_screen.dart';
 import 'package:uniapp/uitls/colors.dart';
 import 'package:uniapp/uitls/utils.dart';
-import 'package:uniapp/widgets/text_field_input.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -30,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _isLoading = true;
     });
-    final String email = ('${_emailController.text}@ogrenci.karabuk.edu.tr');
+    final String email = (_emailController.text);
     print(email);
     String res = await AuthMethods().loginUser(
       email: email,
@@ -87,10 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintText: 'Enter Student Number',
                   ),
                   controller: _emailController,
-                  maxLength: 10,
                   maxLines: 1,
                   textAlign: TextAlign.center,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                 ),
                 const SizedBox(
                   height: 10,

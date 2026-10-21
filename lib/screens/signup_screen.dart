@@ -32,31 +32,41 @@ class _LoginScreenState extends State<SignUpScreen> {
   }
 
   void selectImage() async {
-    Uint8List im = await pickImage(ImageSource.gallery);
+    final Uint8List? im = await pickImage(ImageSource.gallery);
+    if (im == null || !mounted) {
+      return;
+    }
     setState(() {
       _image = im;
     });
   }
 
-  void signUpUser() async {
+  Future<void> signUpUser() async {
+    if (_emailController.text.trim().isEmpty ||
+        _passwordController.text.isEmpty ||
+        _usernameController.text.trim().isEmpty ||
+        _bioController.text.trim().isEmpty) {
+      showSnackBar(context, 'Please enter all the fields');
+      return;
+    }
+
     setState(() {
       _isloading = true;
     });
-    final String email = ('${_emailController.text}@ogrenci.karabuk.edu.tr');
-    String res = await AuthMethods().signUpUser(
-      email: email,
+
+    final res = await AuthMethods().signUpUser(
+      email: _emailController.text,
       password: _passwordController.text,
       username: _usernameController.text,
       bio: _bioController.text,
-      file: _image!,
+      file: _image,
     );
-    setState(() {
-      _isloading = false;
-    });
+
+    if (!mounted) return;
+    setState(() => _isloading = false);
     if (res != 'success') {
       showSnackBar(context, res);
-      print('object');
-    } else {}
+    }
   }
 
   void navigateToLogin() {
@@ -116,7 +126,7 @@ class _LoginScreenState extends State<SignUpScreen> {
               TextFieldInput(
                 hintText: 'Enter Your Email',
                 textEditingController: _emailController,
-                textInputType: TextInputType.number,
+                textInputType: TextInputType.text,
                 icon: const Icon(Icons.email),
               ),
               const SizedBox(

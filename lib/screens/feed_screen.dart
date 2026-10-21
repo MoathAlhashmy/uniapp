@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:uniapp/screens/chat_screen.dart';
 import 'package:uniapp/widgets/feed/post_card.dart';
-import 'package:uniapp/resources/firestore_methods.dart' as fireStore;
 
 class FeedScreen extends StatefulWidget {
   final String uid;
@@ -87,7 +85,6 @@ class _FeedScreenState extends State<FeedScreen> {
               future: FirebaseFirestore.instance
                   .collection('posts')
                   .orderBy('datePublished', descending: true)
-                  .where('uid', whereIn: followingUser)
                   .where('uid')
                   .get(),
               builder: (context,
